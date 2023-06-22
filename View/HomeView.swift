@@ -9,49 +9,53 @@ import SwiftUI
 
 struct HomeView: View {
     var body: some View {
-        
-        VStack{
+        NavigationStack{
             
-            HStack{
-                VStack(alignment:.leading){
-                    Text("Watch Collections")
-                        .font(.system(size: 36))
-                        .fontWeight(.bold)
-                    Text("The best range of smart watches")
-                        .font(.system(size: 20))
-                        .fontWeight(.medium)
-                        .foregroundColor(.gray)
-                    SearchBar()
-                    ScrollView(.horizontal){
-                        HStack(spacing:20){
-                            ProductCard()
-                            ProductCard()
-                        }
-                        .padding(.vertical,20)
-
-
-                    }
-                    .padding(.trailing,-30)
-
-
-                  
-                }
+            VStack{
                 
+                HStack{
+                    VStack(alignment:.leading){
+                        Text("Watch Collections")
+                            .font(.system(size: 36))
+                            .fontWeight(.bold)
+                        Text("The best range of smart watches")
+                            .font(.system(size: 20))
+                            .fontWeight(.medium)
+                            .foregroundColor(.gray)
+                        SearchBar()
+                        ScrollView(.horizontal){
+                            HStack(spacing:20){
+                                NavigationLink(destination: ProductView()){
+                                    ProductCard()
+                                    ProductCard()
+                                }
+                            }
+                            .padding(.vertical,20)
+                            
+                            
+                        }
+                        .padding(.trailing,-30)
+                        
+                        
+                        
+                    }
+                    
+                    Spacer()
+                    
+                }
                 Spacer()
-
+                
+                
             }
-            Spacer()
-
-
+            .frame(maxWidth: .infinity,maxHeight: .infinity)
+            
+            
+            .padding(10)
+            .background(Color("BgColor"))
+            
+            
+            
         }
-        .frame(maxWidth: .infinity,maxHeight: .infinity)
-
-                 
-                 .padding()
-                 .background(Color("BgColor"))
-
-
-        
     }
 }
 
