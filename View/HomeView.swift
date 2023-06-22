@@ -15,14 +15,15 @@ struct HomeView: View {
                 
                 HStack{
                     VStack(alignment:.leading){
-                        Text("Watch Collections")
+                        Text("Wow Watch")
                             .font(.system(size: 36))
                             .fontWeight(.bold)
                         Text("The best range of smart watches")
                             .font(.system(size: 20))
-                            .fontWeight(.medium)
                             .foregroundColor(.gray)
-                        SearchBar()
+                            
+                            SearchBar()
+                        
                         ScrollView(.horizontal){
                             HStack(spacing:20){
                                 NavigationLink(destination: ProductView()){
@@ -67,34 +68,43 @@ struct HomeView_Previews: PreviewProvider {
 
 
 struct SearchBar: View {
+    
     @State var userName : String = ""
 
     var body: some View{
         HStack{
             HStack{
-                Image("SearchIcon")
+                    
+                    HStack{
+                        Image("SearchIcon")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: 25)
+                            .padding(.leading,10)
+                        TextField("Search", text: $userName)
+                            .padding(.leading,5)
+                            .font(.system(size: 20))
+                            .foregroundColor(Color("TextGray"))
+                        Spacer()
+
+                    }
+
+                }
+                .frame(height: 50)
+                
+                .background(Color.white)
+                
+                .cornerRadius(80)
+                
+                Image("Filter")
                     .resizable()
                     .scaledToFit()
-                    .frame(width: 30)
+                    .frame(width: 50)
                     .padding(.leading,10)
-                TextField("Search", text: $userName)
-                    .padding(.leading,5)
-                    .font(.system(size: 20))
             }
-            .frame(height: 50)
+            .padding(.top)
             
-            .background(Color.white)
-            
-            .cornerRadius(80)
-         
-            Image("Filter")
-                .resizable()
-                .scaledToFit()
-                .frame(width: 50)
-        }
-        .padding(.top)
-
-      
+    
     }
 }
 

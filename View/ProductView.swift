@@ -8,8 +8,16 @@
 import SwiftUI
 
 struct ProductView: View {
+    
+    let transition = AnyTransition.asymmetric(insertion: .slide, removal: .scale).combined(with: .opacity)
+    let transition2 = AnyTransition.asymmetric(insertion: .slide, removal: .slide).combined(with: .opacity)
+
+    @State private var activeWatch : String = "blue"
+    
+
     var body: some View {
         VStack{
+            
             VStack{
                 
             }
@@ -29,78 +37,119 @@ struct ProductView: View {
                     .font(.system(size: 18 ))
                     .padding(.bottom,-10)
                 
-                Image("w1")
-                    .resizable()
-                    .scaledToFit()
-                    .frame(width: 320,height: 320)
-                    .padding(.top,50)
+                if(activeWatch=="blue"){
+                    Image("w1")
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 320,height: 320)
+                        .padding(.top,50)
+                        .transition(transition2)
+                    
 
                 
+
+                }
+                else  if(activeWatch=="black"){
+                    Image("w2")
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 320,height: 320)
+                        .padding(.top,50)
+                        .transition(transition2)
+
+
+                }
+                
+               
+                
             }
+            .animation(.default.speed(0.7))
+
             .padding(.top,-240)
-            VStack{
-                HStack{
-                    Text("Series 8")
-                        .foregroundColor(Color("TextBlack"))
-                        .font(.system(size: 24))
-                        .fontWeight(.bold)
-                    Spacer()
-                    Text("$449")
-                        .foregroundColor(Color("TextBlack"))
-                        .font(.system(size: 24))
-                        .fontWeight(.bold)
-                    
-                    
-                }
-                HStack{
-                    Text("Midnight Aluminum case with Leather Link")
-                        .padding(.top,1)
-                        .fontWeight(.medium)
-                    Spacer()
-                }
-                HStack(alignment:.bottom){
-                    Text("Band Colors")
-                        .foregroundColor(Color("TextBlack"))
-                        .font(.system(size: 20))
-                        .fontWeight(.bold)
-                    Spacer()
-                    Text("Midnight")
-                        .foregroundColor(Color("TextBlack"))
-                        .font(.system(size: 18))
-                        .fontWeight(.medium)
-                    
-                    
-                }
-                .padding(.top)
-                HStack(spacing: 10){
-                    ColorBtn(colorname: "TextBlue")
-                    ColorBtn(colorname: "TextBlue")
-                    ColorBtn(colorname:"TextBlack")
-                    ColorBtn(colorname: "TextBlue")
-                    ColorBtn(colorname:"TextBlack")
+            ScrollView{
+                VStack{
+                    HStack{
+                        Text("Series 8")
+                            .foregroundColor(Color("TextBlack"))
+                            .font(.system(size: 28))
+                            .fontWeight(.semibold)
+                        Spacer()
+                        Text("$449")
+                            .foregroundColor(Color("TextBlack"))
+                            .font(.system(size: 24))
+                            .fontWeight(.bold)
+                        
+                        
+                    }
+                    HStack{
+                        Text("Midnight Aluminum case with Leather Link")
+                            .padding(.top,-15)
+                            .font(.system(size: 14))
 
-                    Spacer()
-                }
+                        Spacer()
+                    }
+                    HStack(alignment:.bottom){
+                        Text("Band Colors")
+                            .foregroundColor(Color("TextBlack"))
+                            .font(.system(size: 20))
+                            .fontWeight(.semibold)
+                        Spacer()
+                        Text("\(activeWatch)")
+                            .foregroundColor(Color("TextBlack"))
+                            .font(.system(size: 18))
+                            .fontWeight(.medium)
+                            .transition(transition2)
 
-                HStack{
-                    Text("The aluminium case is lightweight and mode from 100 precent recycled aerospace-grade alloy ")
+
+                        
+                        
+                    }
+                    .padding(.top)
+                    HStack(spacing: 10){
+                        Button(action: {
+                            activeWatch = "blue"
+                        }) {
+                            ColorBtn(colorname: "TextBlue")
+                            
+                            
+                        }
+                        
+                        
+                        Button(action: {
+                            activeWatch = "black"
+                            
+                        }) {
+                            ColorBtn(colorname: "TextBlack")
+                            
+                        }
+                        Button(action: {
+                            print("Button tapped!")
+                        }) {
+                            ColorBtn(colorname: "TextGray")
+                        }
+                        
+                        Spacer()
+                    }
                     
-                        .foregroundColor(Color("TextGray"))
-                        .font(.system(size: 16))
-                        .fontWeight(.medium)
-                    +
+                    HStack{
+                        Text("The aluminium case is lightweight and mode from 100 precent recycled aerospace-grade alloy ")
+                        
+                            .foregroundColor(Color("TextGray"))
+                            .font(.system(size: 16))
+                        +
                         Text("Read More")
                             .foregroundColor(.blue)
                             .font(.system(size: 16))
                             .fontWeight(.semibold)
-                    Spacer()
+                        Spacer()
+                    }
+                    .padding(.top)
+                    
+                    
+                    
                 }
-                .padding(.top)
-                
-                
-
+                .padding(20)
             }
-            .padding(20)
             Spacer()
 
             HStack{
@@ -134,9 +183,12 @@ struct ProductView: View {
                         }
             }
 
+            .animation(.default.speed(0.7))
+
 
 
         }
+
        
         .toolbar(.hidden, for: .tabBar)
 
@@ -162,3 +214,4 @@ struct ColorBtn : View {
         .cornerRadius(40)
     }
 }
+

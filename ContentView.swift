@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct ContentView: View {
+    
     @State private var selectedTab = 1
     var body: some View {
         
@@ -24,7 +25,7 @@ struct ContentView: View {
                     Image(systemName: "house")
                         
                 }
-            HomeView()
+            ExpolreView()
 
                 .tag(2)
                 .tabItem {
