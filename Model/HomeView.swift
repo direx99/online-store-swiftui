@@ -22,6 +22,19 @@ struct HomeView: View {
                         .fontWeight(.medium)
                         .foregroundColor(.gray)
                     SearchBar()
+                    ScrollView(.horizontal){
+                        HStack(spacing:20){
+                            ProductCard()
+                            ProductCard()
+                        }
+                        .padding(.vertical,20)
+
+
+                    }
+                    .padding(.trailing,-30)
+
+
+                  
                 }
                 
                 Spacer()
@@ -32,8 +45,11 @@ struct HomeView: View {
 
         }
         .frame(maxWidth: .infinity,maxHeight: .infinity)
+
                  
                  .padding()
+                 .background(Color("BgColor"))
+
 
         
     }
@@ -66,8 +82,7 @@ struct SearchBar: View {
             .background(Color.white)
             
             .cornerRadius(80)
-            .shadow(color: Color.gray.opacity(0.3), radius: 50, x: 10, y: 10)
-            .shadow(color: Color.gray.opacity(0.3), radius: 50, x: -10, y: -10)
+         
             Image("Filter")
                 .resizable()
                 .scaledToFit()
@@ -79,4 +94,75 @@ struct SearchBar: View {
     }
 }
 
+struct ProductCard : View{
+    var body: some View{
+        VStack{
+            HStack{
+                Text("TRENDING")
+                    .foregroundColor(Color("TextBlue"))
+                    .fontWeight(.bold)
+                    .font(.system(size: 16))
+                    .padding(.top,30)
+                    .padding(.leading,30)
+                    .padding(.bottom,-10)
 
+
+                Spacer()
+                
+            }
+            Image("w1")
+                .resizable()
+                .scaledToFit()
+            HStack{
+                VStack(alignment: .leading){
+                    Text("Series 7")
+                        .foregroundColor(Color("TextBlack"))
+                        .fontWeight(.bold)
+                        .font(.system(size: 24))
+                        .padding(.leading,30)
+                        .padding(.bottom,1)
+                        .padding(.top,10)
+                    Group{
+                        Text("Apple watch")
+                           
+                        Text("8+ colors")
+                    }
+                        .foregroundColor(Color("TextGray"))
+                        .fontWeight(.semibold)
+                        .font(.system(size: 20))
+                        .padding(.leading,30)
+                    HStack(){
+                        Text("$449")
+                            .foregroundColor(Color("TextBlack"))
+                            .fontWeight(.heavy)
+                            .font(.system(size: 24))
+                            .padding(.leading,30)
+                            .padding(.top,5)
+                        Spacer()
+                        Image(systemName: "plus.circle.fill")
+                            .font(.system(size: 45))
+                            .foregroundColor(Color("TextBlue"))
+                            .padding(.trailing,10)
+                           
+
+                        
+                    }
+                    
+                }
+                    
+                .padding(.bottom,20)
+
+                Spacer()
+                
+            }
+            
+        }
+        .frame(width: 250)
+        .background(Color.white)
+        .cornerRadius(20)
+        .shadow(color: Color.gray.opacity(0.2), radius: 10, x: 5, y: 5)
+
+        
+
+    }
+}

@@ -13,6 +13,8 @@ struct ContentView: View {
            HomeView()
         }
         .padding()
+        .background(Color("BgColor"))
+
     }
 }
 
