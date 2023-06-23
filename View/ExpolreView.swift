@@ -12,64 +12,68 @@ struct ExpolreView: View {
     let gridItemLayout = [GridItem(.flexible()), GridItem(.flexible())]
 
     let products: [Product] = [
-        Product(id: 1, name: "Product 1", image: "product1"),
-        Product(id: 2, name: "Product 2", image: "product2"),
-        Product(id: 3, name: "Product 3", image: "product3"),
-        Product(id: 4, name: "Product 4", image: "product4"),
-        Product(id: 5, name: "Product 5", image: "product5"),
-        Product(id: 6, name: "Product 6", image: "product6")
+        Product(id: 1, name: "Series 8", image: "w1"),
+        Product(id: 2, name: "Product 2", image: "w2"),
+        Product(id: 3, name: "Product 3", image: "w1"),
+        Product(id: 4, name: "Product 4", image: "w2"),
+        Product(id: 5, name: "Product 5", image: "w1"),
+        Product(id: 6, name: "Product 6", image: "w2")
     ]
     
 
     
     @State private var selectedBrand = "All"
     var body: some View {
-        VStack{
-            SearchBar()
-            ScrollView(.horizontal,showsIndicators: false){
-                HStack{
-                    BrandBar(selectedBrand: "All", isSelected: selectedBrand == "All") {
-                                            selectedBrand = "All"
-                                        }
-                                        BrandBar(selectedBrand: "Apple", isSelected: selectedBrand == "Apple") {
-                                            selectedBrand = "Apple"
-                                        }
-                                        BrandBar(selectedBrand: "oppo", isSelected: selectedBrand == "oppo") {
-                                            selectedBrand = "oppo"
-                                        }
-                                        BrandBar(selectedBrand: "mi", isSelected: selectedBrand == "mi") {
-                                            selectedBrand = "mi"
-                                        }
-                    BrandBar(selectedBrand: "Samsung", isSelected: selectedBrand == "Samsung") {
-                        selectedBrand = "Samsung"
+        NavigationStack{
+            VStack{
+                SearchBar()
+                
+                ScrollView (showsIndicators: false) {
+                    ScrollView(.horizontal,showsIndicators: false){
+                        HStack{
+                            BrandBar(selectedBrand: "All", isSelected: selectedBrand == "All") {
+                                selectedBrand = "All"
+                            }
+                            BrandBar(selectedBrand: "Apple", isSelected: selectedBrand == "Apple") {
+                                selectedBrand = "Apple"
+                            }
+                            BrandBar(selectedBrand: "oppo", isSelected: selectedBrand == "oppo") {
+                                selectedBrand = "oppo"
+                            }
+                            BrandBar(selectedBrand: "mi", isSelected: selectedBrand == "mi") {
+                                selectedBrand = "mi"
+                            }
+                            BrandBar(selectedBrand: "Samsung", isSelected: selectedBrand == "Samsung") {
+                                selectedBrand = "Samsung"
+                            }
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            Spacer()
+                        }
                     }
-
-                    
-                   
-                    
-                    
-                    
-                    
-                    
-                    Spacer()
-                }
-            }
-            .padding(.top)
-            .padding(.trailing,-20)
-            ScrollView {
-                LazyVGrid(columns: gridItemLayout, spacing: 16) {
-                    ForEach(products) { product in
-                        SmallProductCard(product: product)
+                    .padding(.trailing,-20)
+                    LazyVGrid(columns: gridItemLayout, spacing: 16) {
+                        ForEach(products) { product in
+                            NavigationLink(destination: ProductView()){
+                                SmallProductCard(product: product)
+                            }
+                        }
                     }
+                    .padding(.top)
                 }
+                .padding(.top,10)
+                .padding(.bottom,-30)
+                Spacer()
             }
-            .padding(.top)
-            .padding(.bottom,-30)
-            Spacer()
+            .padding()
+            .background(Color("BgColor"))
         }
-        .padding()
-        .background(Color("BgColor"))
-
     }
 
 }
@@ -101,6 +105,7 @@ struct BrandBar: View {
             .background(isSelected ? Color.blue : Color("TextGray"))
             .cornerRadius(100)
         }
+        
     }
 }
 
@@ -118,18 +123,34 @@ struct SmallProductCard: View {
     let product: Product
     
     var body: some View {
-        VStack {
-            Image(product.image)
-                .resizable()
-                .aspectRatio(contentMode: .fit)
-                .frame(height: 150)
-            
-            Text(product.name)
-                .font(.headline)
+            VStack {
+                Image(product.image)
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .frame(height: 150)
+                HStack(){
+                    VStack(alignment: .leading){
+                        HStack{
+                            Text(product.name)
+                                .font(.headline)
+                            Spacer()
+                            Text("$649")
+                                .font(.system(size: 20))
+                        }
+                        
+                        Text("Apple iWatch")
+                            .font(.system(size: 12))
+                            .opacity(0.8)
+                        
+                    }
+                    Spacer()
+                    
+                }
+            }
+            .padding(10)
+            .background(Color.white)
+            .cornerRadius(15)
         }
-        .padding(8)
-        .background(Color.white)
-        .cornerRadius(8)
-    }
+    
 }
 

@@ -33,6 +33,14 @@ struct ContentView: View {
                         
                 }
                 .tag(2)
+            WalletView()
+
+                .tag(3)
+                .tabItem {
+                    Image(systemName: "house.fill")
+                        
+                }
+                .tag(2)
           
            
         }

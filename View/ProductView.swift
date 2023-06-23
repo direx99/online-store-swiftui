@@ -23,6 +23,7 @@ struct ProductView: View {
             }
             .frame(width: 300,height: 100)
             .background(Color("LightGray"))
+
             VStack{
                 
             }
@@ -30,6 +31,7 @@ struct ProductView: View {
             .background(Color("LightGray"))
             .cornerRadius(100)
             .padding(.top,-100)
+
             VStack{
                 Text("TRENDING")
                     .foregroundColor(Color("TextBlue"))
