@@ -12,21 +12,27 @@ struct HomeView: View {
         NavigationStack{
             
             VStack{
-                
+
                 HStack{
                     VStack(alignment:.leading){
                         Text("Wow Watch")
-                            .font(.system(size: 36))
+                            .font(.system(size: 30))
                             .fontWeight(.bold)
                         Text("The best range of smart watches")
                             .font(.system(size: 20))
                             .foregroundColor(.gray)
-                            
-                            SearchBar()
+                        HStack{
+                            Coupen()
+
+                        }
+                        .padding(.trailing,-10)
                         
-                        ScrollView(.horizontal){
+                        ScrollView(.horizontal,showsIndicators: false){
                             HStack(spacing:20){
                                 NavigationLink(destination: ProductView()){
+                                    ProductCard()
+                                    ProductCard()
+                                    ProductCard()
                                     ProductCard()
                                     ProductCard()
                                 }
@@ -51,7 +57,7 @@ struct HomeView: View {
             .frame(maxWidth: .infinity,maxHeight: .infinity)
             
             
-            .padding(10)
+            .padding(20)
             .background(Color("BgColor"))
             
             
@@ -115,10 +121,10 @@ struct ProductCard : View{
                 Text("TRENDING")
                     .foregroundColor(Color("TextBlue"))
                     .fontWeight(.bold)
-                    .font(.system(size: 16))
+                    .font(.system(size: 14))
                     .padding(.top,30)
                     .padding(.leading,30)
-                    .padding(.bottom,-10)
+                    .padding(.bottom,10)
 
 
                 Spacer()
@@ -127,38 +133,52 @@ struct ProductCard : View{
             Image("w1")
                 .resizable()
                 .scaledToFit()
+                .padding(10)
             HStack{
                 VStack(alignment: .leading){
-                    Text("Series 7")
-                        .foregroundColor(Color("TextBlack"))
-                        .fontWeight(.bold)
-                        .font(.system(size: 24))
-                        .padding(.leading,30)
-                        .padding(.bottom,1)
-                        .padding(.top,10)
+                    HStack{
+                        Text("Series 7")
+                            .foregroundColor(Color("TextBlack"))
+                            .fontWeight(.bold)
+                            .font(.system(size: 22))
+                            .padding(.leading,30)
+                            Spacer()
+                        HStack(spacing:-15){
+                            ColorBtn(colorname: "oo")
+                            ColorBtn(colorname: "hhh")
+                            ColorBtn(colorname: "jj")
+                                
+
+                        }
+                        .padding(.horizontal,10)
+                    }
+                    .padding(.bottom,-5)
+                    .padding(.top,10)
                     Group{
                         Text("Apple watch")
                            
                         Text("8+ colors")
                     }
                         .foregroundColor(Color("TextGray"))
-                        .fontWeight(.semibold)
-                        .font(.system(size: 20))
+                        .font(.system(size: 16))
                         .padding(.leading,30)
                     HStack(){
                         Text("$449")
                             .foregroundColor(Color("TextBlack"))
-                            .fontWeight(.heavy)
-                            .font(.system(size: 24))
+                            .fontWeight(.bold)
+                            .font(.system(size: 20))
                             .padding(.leading,30)
                             .padding(.top,5)
+                      
+
+
+
                         Spacer()
                         Image(systemName: "plus.circle.fill")
-                            .font(.system(size: 45))
+                            .font(.system(size: 30))
                             .foregroundColor(Color("TextBlue"))
                             .padding(.trailing,10)
                            
-
                         
                     }
                     
@@ -175,8 +195,67 @@ struct ProductCard : View{
         .background(Color.white)
         .cornerRadius(20)
         .shadow(color: Color.gray.opacity(0.2), radius: 10, x: 5, y: 5)
+        .padding(.trailing,5)
 
         
 
+    }
+}
+
+
+struct Coupen : View {
+    var body: some View{
+        VStack{
+            HStack{
+                VStack(alignment: .leading){
+                    Text("20% Off")
+                        .font(.system(size: 30))
+                        .fontWeight(.semibold)
+                    Spacer()
+                    Text("On your next purchase")
+                        .font(.system(size: 18))
+                    Text("Before July 31,2023")
+                        .font(.system(size: 16))
+                    
+                       
+                    
+                }
+                .padding(.vertical,15)
+
+                Spacer()
+            }
+            .padding(.leading,40)
+            .frame(maxWidth: .infinity)
+            .frame(height: 100)
+            .background(Color.white)
+            .cornerRadius(10)
+            .padding(.bottom,-70)
+            HStack{
+                VStack{
+                    
+                }
+                .frame(width:35,height: 35)
+                .background(Color("BgColor"))
+                .cornerRadius(40)
+                Spacer()
+                
+                VStack{
+                    
+                }
+                .frame(width:35,height: 35)
+                .background(Color("BgColor"))
+                .cornerRadius(40)
+                
+                
+            }
+            .padding(.horizontal,-18)
+           
+
+           
+        }
+        .padding(.bottom)
+        
+
+        
     }
 }

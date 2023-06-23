@@ -8,14 +8,16 @@
 import SwiftUI
 
 struct WalletView: View {
+    private let mail : String = "dinith.dash@gmail.com"
     var body: some View {
-        VStack{
+            VStack{
            
             Image("u")
                 .resizable()
                 .scaledToFit()
-                .frame(width: 200)
+                .frame(width: 120)
                 .cornerRadius(200)
+                .padding(.top,30)
             HStack(alignment: .top){
                 Text("Dinith Perera")
                     .fontWeight(.semibold)
@@ -24,31 +26,203 @@ struct WalletView: View {
                     .fontWeight(.medium)
                     .font(.system(size: 15))
             }
+                
             Text("Silver Member")
                 .fontWeight(.medium)
                 .font(.system(size: 15))
                 .opacity(0.6)
+                .padding(.bottom,30)
             
-            HStack{
                 VStack{
+                    HStack{
+                        Text("Email")
+                            .fontWeight(.medium)
+                            .font(.system(size: 15))
+
+
+                        Spacer()
+                        Text("\(mail)")
+                            .foregroundColor(Color.gray)
+                            .fontWeight(.medium)
+                            .font(.system(size: 15))
+                        Image(systemName: "chevron.right")
+                            .foregroundColor(Color.gray)
+                            .fontWeight(.semibold)
+                            .font(.system(size: 12))
+                    }
+                    .padding(.vertical,2)
+                    
+                    HStack{
+                        
+                    }
+                    .frame(height: 0.8)
+                    .frame(maxWidth: .infinity)
+                    .background(Color.black)
+                    .opacity(0.1)
+
+                    HStack{
+                        Text("Country")
+                            .fontWeight(.medium)
+                            .font(.system(size: 15))
+
+
+                        Spacer()
+                        Text("Sri Lanka 🇱🇰")
+                            .foregroundColor(Color.gray)
+                            .fontWeight(.medium)
+                            .font(.system(size: 15))
+                        Image(systemName: "chevron.right")
+                            .foregroundColor(Color.gray)
+                            .fontWeight(.semibold)
+                            .font(.system(size: 12))
+
+
+
+                    }
+                    .padding(.vertical,2)
+
+                    HStack{
+                        
+                    }
+                    .frame(height: 0.8)
+                    .frame(maxWidth: .infinity)
+                    .background(Color.black)
+                    .opacity(0.1)
+                    HStack{
+                        Text("Telephone")
+                            .fontWeight(.medium)
+                            .font(.system(size: 15))
+
+
+                        Spacer()
+                        Text("+94769182291")
+                            .foregroundColor(Color.gray)
+                            .fontWeight(.medium)
+                            .font(.system(size: 15))
+                        Image(systemName: "chevron.right")
+                            .foregroundColor(Color.gray)
+                            .fontWeight(.semibold)
+                            .font(.system(size: 12))
+
+
+
+                    }
+                    .padding(.vertical,2)
+
+                    
                     
                 }
-                .frame(width: 260,height: 20)
-                .background(Color(.gray))
-                .cornerRadius(20)
-                Spacer()
-            }
-            .frame(width: 360,height: 20)
-            .background(Color("BgColor"))
-            .cornerRadius(20)
+                .padding()
+                .background(Color.white)
+                .cornerRadius(15)
             
             
-            CreditCard()
-           
+                
+                    HStack{
+                        
+                        VStack{
+                            Image("h")
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: 16)
+                        }
+                        .frame(width: 30,height: 30)
+                        .background(Color("hhh"))
+                        .cornerRadius(10)
+                        Text("Crisis Support")
+                            .fontWeight(.medium)
+                            .font(.system(size: 15))
+                        Spacer()
+                        Image(systemName: "chevron.right")
+                            .foregroundColor(Color.black)
+                            .fontWeight(.semibold)
+                            .font(.system(size: 12))
+                    }
+                    .padding(10)
+                    .padding(.horizontal,5)
+                    .frame(maxWidth: .infinity)
+                    .background(Color.white)
+                    .cornerRadius(15)
+                    .padding(.top)
+                
+                VStack{
+                    HStack{
+                        
+                        VStack{
+                            Image(systemName: "lock.fill")
+                                .font(.system(size: 15))
+                                .opacity(0.6)
+
+                               
+                        }
+                        .frame(width: 30,height: 30)
+                        .background(Color("jj"))
+                        .cornerRadius(10)
+                        Text("Change password")
+                            .fontWeight(.medium)
+                            .font(.system(size: 15))
+                        Spacer()
+                        Image(systemName: "chevron.right")
+                            .foregroundColor(Color.black)
+                            .fontWeight(.semibold)
+                            .font(.system(size: 12))
+                    }
+                    HStack{
+                        
+                        VStack{
+                            Text("?")
+                                .font(.system(size: 15))
+                                .fontWeight(.bold)
+                                .opacity(0.7)
+
+                        }
+                        .frame(width: 30,height: 30)
+                        .background(Color("oo"))
+                        .cornerRadius(10)
+                        Text("Help")
+                            .fontWeight(.medium)
+                            .font(.system(size: 15))
+                        Spacer()
+                        Image(systemName: "chevron.right")
+                            .foregroundColor(Color.black)
+                            .fontWeight(.semibold)
+                            .font(.system(size: 12))
+                    }
+                    HStack{
+                        
+                        VStack{
+                            Image(systemName: "info")
+                                .font(.system(size: 15))
+                                .fontWeight(.semibold)
+                                .opacity(0.7)
+                        }
+                        .frame(width: 30,height: 30)
+                        .background(Color("hhh"))
+                        .cornerRadius(10)
+                        Text("The Wow Watch Store")
+                            .fontWeight(.medium)
+                            .font(.system(size: 15))
+                        Spacer()
+                        Image(systemName: "chevron.right")
+                            .foregroundColor(Color.black)
+                            .fontWeight(.semibold)
+                            .font(.system(size: 12))
+                    }
+                }
+                .padding(15)
+                .frame(maxWidth: .infinity)
+                .background(Color.white)
+                .cornerRadius(15)
+                .padding(.top)
+                
                 
             Spacer()
         }
+            
         .padding()
+        .frame(maxWidth: .infinity)
+        .background(Color("BgColor"))
+
 
     }
 }
