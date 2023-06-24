@@ -11,40 +11,76 @@ struct ContentView: View {
     
     @State private var selectedTab = 1
     var body: some View {
-        
-        TabView(selection: $selectedTab) {
-            HomeView()
-                .tabItem {
-                    Image(systemName: "house.fill")
+        VStack{
+            TabView(selection: $selectedTab) {
+                HomeView()
+                    .tag(1)
+                    .tabItem {
+                        if (selectedTab == 1){
+                            Image("home")
+                                
+                                
+                        }
+                            else{
+                            Image("homei")
+                                    
+                                   
+                        }
+                    }
+                ExpolreView()
+                
+                    .tag(2)
+                    .tabItem {
+                        if (selectedTab == 2){
+                            Image("search")
+                                
+                                
+                        }
+                            else{
+                            Image("searchi")
+                                    
+                                   
+                        }
                         
-                }
-            HomeView()
-
-                .tag(1)
-                .tabItem {
-                    Image(systemName: "house")
+                    }
+                ExpolreView()
+                
+                    .tag(3)
+                    .tabItem {
+                        if (selectedTab == 3){
+                            Image("cart")
+                                
+                                
+                        }
+                            else{
+                            Image("cart")
+                                    
+                                   
+                        }
                         
-                }
-            ExpolreView()
-
-                .tag(2)
-                .tabItem {
-                    Image(systemName: "house.fill")
+                    }
+                WalletView()
+                
+                    .tag(4)
+                    .tabItem {
+                        if (selectedTab == 4){
+                            Image("user")
+                                
+                                
+                        }
+                            else{
+                            Image("useri")
+                                    
+                                   
+                        }
                         
-                }
-                .tag(2)
-            WalletView()
-
-                .tag(3)
-                .tabItem {
-                    Image(systemName: "house.fill")
-                        
-                }
-                .tag(2)
-          
-           
+                    }
+                    
+                
+                
+            }
+            
         }
-        .accentColor(.black)
         
         
         

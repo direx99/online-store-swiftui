@@ -15,26 +15,55 @@ struct HomeView: View {
 
                 HStack{
                     VStack(alignment:.leading){
-                        Text("Wow Watch")
-                            .font(.system(size: 30))
-                            .fontWeight(.bold)
-                        Text("The best range of smart watches")
-                            .font(.system(size: 20))
-                            .foregroundColor(.gray)
                         HStack{
+                            Text("Hi Dinith ")
+                                .font(.system(size: 24))
+                                .fontWeight(.bold)
+                            Spacer()
+                            Image(systemName: "cart")
+                                .font(.system(size: 24))
+                            .fontWeight(.bold)
+                            .padding(.trailing,-10)
+                            
+                               
+                        }
+                        .padding(.leading,10)
+                        .padding(.top)
+
+                        Text("The best range of smart watches")
+                            .font(.system(size: 14))
+                            .padding(.leading,10)
+                            .fontWeight(.light)
+                            .opacity(0.7)
+                            .padding(.bottom)
+
+                        VStack{
+                            SearchBar()
+                                .padding(.bottom,5)
                             Coupen()
 
                         }
+                        .padding(.top,-10)
                         .padding(.trailing,-10)
                         
                         ScrollView(.horizontal,showsIndicators: false){
                             HStack(spacing:20){
                                 NavigationLink(destination: ProductView()){
-                                    ProductCard()
-                                    ProductCard()
-                                    ProductCard()
-                                    ProductCard()
-                                    ProductCard()
+                                    ProductCard(wimg: "x1",name: "Ultra",  brand:"Apple iWatch",price:"$869")
+                                    ProductCard(wimg: "s2",name: "S Watch",  brand:"Samsung iWatch",price:"$399")
+                                    
+                                    ProductCard(wimg: "w2",name: "Series 8",  brand:"Apple iWatch",price:"$469")
+                                    
+                                  
+                                    
+                                    ProductCard(wimg: "w1",name: "Series 8",  brand:"Apple iWatch",price:"$469")
+                                    
+                                    ProductCard(wimg: "s1",name: "S Watch",  brand:"Samsung iWatch",price:"$399")
+                                    
+                                    ProductCard(wimg: "w3",name: "Series 8",  brand:"Apple iWatch",price:"$469")
+                                    
+                                    ProductCard(wimg: "s3",name: "S Watch",  brand:"Samsung iWatch",price:"$399")
+                                  
                                 }
                             }
                             .padding(.vertical,20)
@@ -85,18 +114,18 @@ struct SearchBar: View {
                         Image("SearchIcon")
                             .resizable()
                             .scaledToFit()
-                            .frame(width: 25)
+                            .frame(width: 20)
                             .padding(.leading,10)
                         TextField("Search", text: $userName)
                             .padding(.leading,5)
-                            .font(.system(size: 20))
+                            .font(.system(size: 14))
                             .foregroundColor(Color("TextGray"))
                         Spacer()
 
                     }
 
                 }
-                .frame(height: 50)
+                .frame(height: 40)
                 
                 .background(Color.white)
                 
@@ -105,7 +134,7 @@ struct SearchBar: View {
                 Image("Filter")
                     .resizable()
                     .scaledToFit()
-                    .frame(width: 50)
+                    .frame(width: 40)
                     .padding(.leading,10)
             }
             .padding(.top)
@@ -115,14 +144,20 @@ struct SearchBar: View {
 }
 
 struct ProductCard : View{
+    @State  var wimg : String
+    @State  var name : String
+    @State  var brand : String
+    @State  var price : String
+
+
     var body: some View{
         VStack{
             HStack{
-                Text("TRENDING")
+                Text("TRENDING ⚡️")
                     .foregroundColor(Color("TextBlue"))
                     .fontWeight(.bold)
-                    .font(.system(size: 14))
-                    .padding(.top,30)
+                    .font(.system(size: 12))
+                    .padding(.top,20)
                     .padding(.leading,30)
                     .padding(.bottom,10)
 
@@ -130,40 +165,49 @@ struct ProductCard : View{
                 Spacer()
                 
             }
-            Image("w1")
+            Image("\(wimg)")
                 .resizable()
                 .scaledToFit()
-                .padding(10)
+                .padding(.horizontal,-20)
+                .padding(.vertical,-20)
+Spacer()
             HStack{
                 VStack(alignment: .leading){
                     HStack{
-                        Text("Series 7")
+                        Text("\(name)")
                             .foregroundColor(Color("TextBlack"))
                             .fontWeight(.bold)
-                            .font(.system(size: 22))
+                            .font(.system(size: 20))
                             .padding(.leading,30)
                             Spacer()
                         HStack(spacing:-15){
-                            ColorBtn(colorname: "oo")
-                            ColorBtn(colorname: "hhh")
-                            ColorBtn(colorname: "jj")
+                            ColorBtn(colorname: "TextBlack")
+                            ColorBtn(colorname: "c1")
+                            ColorBtn(colorname: "c2")
                                 
 
                         }
+                        
                         .padding(.horizontal,10)
                     }
                     .padding(.bottom,-5)
                     .padding(.top,10)
                     Group{
-                        Text("Apple watch")
+                        Text("\(brand)")
                            
                         Text("8+ colors")
+                            .font(.system(size: 12))
+                            .padding(.top,-5)
+
+
                     }
+                    .padding(.top,-5)
+
                         .foregroundColor(Color("TextGray"))
-                        .font(.system(size: 16))
+                        .font(.system(size: 15))
                         .padding(.leading,30)
-                    HStack(){
-                        Text("$449")
+                    HStack(alignment:.bottom){
+                        Text("\(price)")
                             .foregroundColor(Color("TextBlack"))
                             .fontWeight(.bold)
                             .font(.system(size: 20))
@@ -175,7 +219,7 @@ struct ProductCard : View{
 
                         Spacer()
                         Image(systemName: "plus.circle.fill")
-                            .font(.system(size: 30))
+                            .font(.system(size: 24))
                             .foregroundColor(Color("TextBlue"))
                             .padding(.trailing,10)
                            
@@ -186,16 +230,19 @@ struct ProductCard : View{
                     
                 .padding(.bottom,20)
 
-                Spacer()
+                   
                 
             }
+            .padding(.top,20)
+            
             
         }
-        .frame(width: 250)
+        .frame(width: 240,height: 400)
         .background(Color.white)
         .cornerRadius(20)
         .shadow(color: Color.gray.opacity(0.2), radius: 10, x: 5, y: 5)
         .padding(.trailing,5)
+        .padding(.top,10)
 
         
 
@@ -208,14 +255,47 @@ struct Coupen : View {
         VStack{
             HStack{
                 VStack(alignment: .leading){
-                    Text("20% Off")
-                        .font(.system(size: 30))
-                        .fontWeight(.semibold)
+                    HStack{
+                        VStack(alignment: .leading){
+                            Text("20% Off 🔥")
+                                .font(.system(size: 20))
+                                .fontWeight(.semibold)
+                            Text("On your next purchase")
+                                .font(.system(size: 14))
+                        }
+                        Spacer()
+                        VStack(alignment: .trailing){
+                            Text("CP2020")
+                                .foregroundColor(.orange)
+                                .font(.system(size: 20))
+                                .fontWeight(.semibold)
+                            Text("Redeem Code")
+                                .font(.system(size: 12))
+                                .opacity(0.7)
+                            
+                        }
+                        .padding(.trailing,30)
+                        
+                    }
                     Spacer()
-                    Text("On your next purchase")
-                        .font(.system(size: 18))
-                    Text("Before July 31,2023")
-                        .font(.system(size: 16))
+                    HStack{
+                        Text("*Before July 31,2023")
+                            .font(.system(size: 10))
+                        Spacer()
+                        HStack{
+                            Text("REDEEM NOW")
+                                .font(.system(size: 12))
+                                .foregroundColor(.white)
+                                
+                        }
+                        .padding(5)
+                        .padding(.horizontal,10)
+                        .background(Color.blue)
+                        .cornerRadius(50)
+                        .padding(.trailing,25)
+                        .padding(.top,-5)
+
+                    }
                     
                        
                     
@@ -224,7 +304,7 @@ struct Coupen : View {
 
                 Spacer()
             }
-            .padding(.leading,40)
+            .padding(.leading,35)
             .frame(maxWidth: .infinity)
             .frame(height: 100)
             .background(Color.white)
@@ -253,7 +333,8 @@ struct Coupen : View {
 
            
         }
-        .padding(.bottom)
+        
+        .padding(.bottom,5)
         
 
         

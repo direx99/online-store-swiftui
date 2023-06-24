@@ -12,7 +12,9 @@ struct ProductView: View {
     let transition = AnyTransition.asymmetric(insertion: .slide, removal: .scale).combined(with: .opacity)
     let transition2 = AnyTransition.asymmetric(insertion: .slide, removal: .slide).combined(with: .opacity)
 
-    @State private var activeWatch : String = "blue"
+    @State private var activeWatch : String = "Space Gray"
+    @State private var cart : Bool = false
+
     
 
     var body: some View {
@@ -21,7 +23,7 @@ struct ProductView: View {
             VStack{
                 
             }
-            .frame(width: 300,height: 100)
+            .frame(width: 300,height: 70)
             .background(Color("LightGray"))
 
             VStack{
@@ -33,25 +35,32 @@ struct ProductView: View {
             .padding(.top,-100)
 
             VStack{
-                Text("TRENDING")
-                    .foregroundColor(Color("TextBlue"))
-                    .fontWeight(.bold)
-                    .font(.system(size: 18 ))
-                    .padding(.bottom,-10)
                 
-                if(activeWatch=="blue"){
+                
+                
+                if(activeWatch=="Space Gray"){
                     Image("w1")
                         .resizable()
                         .scaledToFit()
                         .frame(width: 320,height: 320)
-                        .padding(.top,50)
+                        .padding(.top,85)
                         .transition(transition2)
                     
 
                 
 
                 }
-                else  if(activeWatch=="black"){
+                else  if(activeWatch=="Red"){
+                    Image("w3")
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 320,height: 320)
+                        .padding(.top,50)
+                        .transition(transition2)
+
+
+                }
+                else  if(activeWatch=="Orrange"){
                     Image("w2")
                         .resizable()
                         .scaledToFit()
@@ -68,121 +77,170 @@ struct ProductView: View {
             .animation(.default.speed(0.7))
 
             .padding(.top,-240)
-            ScrollView{
                 VStack{
                     HStack{
+                        Text(" iWatch")
+                            .font(.system(size: 24))
+                            .opacity(0.3)
+                            .fontWeight(.regular)
                         Text("Series 8")
                             .foregroundColor(Color("TextBlack"))
-                            .font(.system(size: 28))
-                            .fontWeight(.semibold)
-                        Spacer()
-                        Text("$449")
-                            .foregroundColor(Color("TextBlack"))
                             .font(.system(size: 24))
-                            .fontWeight(.bold)
+                            .fontWeight(.medium)
+                        Spacer()
+                       
                         
                         
                     }
                     HStack{
                         Text("Midnight Aluminum case with Leather Link")
-                            .padding(.top,-15)
+                            .padding(.top,-10)
                             .font(.system(size: 14))
+                            .opacity(0.7)
+                            .fontWeight(.regular)
 
                         Spacer()
                     }
                     HStack(alignment:.bottom){
                         Text("Band Colors")
                             .foregroundColor(Color("TextBlack"))
-                            .font(.system(size: 20))
+                            .font(.system(size: 16))
                             .fontWeight(.semibold)
                         Spacer()
                         Text("\(activeWatch)")
                             .foregroundColor(Color("TextBlack"))
-                            .font(.system(size: 18))
+                            .font(.system(size: 16))
+                            .opacity(0.5)
                             .fontWeight(.medium)
                             .transition(transition2)
+                        
 
 
                         
                         
                     }
                     .padding(.top)
-                    HStack(spacing: 10){
+                    HStack(spacing: 5){
                         Button(action: {
-                            activeWatch = "blue"
-                        }) {
-                            ColorBtn(colorname: "TextBlue")
-                            
-                            
-                        }
-                        
-                        
-                        Button(action: {
-                            activeWatch = "black"
-                            
+                            activeWatch = "Space Gray"
                         }) {
                             ColorBtn(colorname: "TextBlack")
                             
+                            
+                        }
+                        
+                        
+                        Button(action: {
+                            activeWatch = "Red"
+                            
+                        }) {
+                            ColorBtn(colorname: "c1")
+                            
                         }
                         Button(action: {
-                            print("Button tapped!")
+                            activeWatch = "Orrange"
                         }) {
-                            ColorBtn(colorname: "TextGray")
+                            ColorBtn(colorname: "c2")
+                            
+                            
                         }
                         
                         Spacer()
                     }
                     
                     HStack{
-                        Text("The aluminium case is lightweight and mode from 100 precent recycled aerospace-grade alloy ")
+                        Text("The aluminium case is lightweight and mode from 100 precent and 1000 cycles recycled aerospace-grade alloy .  ")
                         
                             .foregroundColor(Color("TextGray"))
-                            .font(.system(size: 16))
+                            .font(.system(size: 14))
                         +
                         Text("Read More")
                             .foregroundColor(.blue)
-                            .font(.system(size: 16))
-                            .fontWeight(.semibold)
+                            .font(.system(size: 14))
                         Spacer()
                     }
                     .padding(.top)
-                    
-                    
+                    HStack(alignment: .bottom){
+                        Text("$449")
+                            .foregroundColor(Color("TextBlack"))
+                            .font(.system(size: 24))
+                            .fontWeight(.medium)
+                        Text("or $99 by 6 month")
+                            .foregroundColor(Color("TextBlack"))
+                            .font(.system(size: 14))
+                            .fontWeight(.regular)
+                            .opacity(0.5)
+                            .padding(.bottom,3)
+                        Spacer()
+
+                    }
+                    .padding(.top)
                     
                 }
                 .padding(20)
-            }
+            
             Spacer()
 
             HStack{
                 Button(action: {
                             // Code to execute when the button is tapped
-                            print("Button tapped!")
+                            
                 }) {
                     
-                    Image(systemName: "cart.badge.plus")
-                        .symbolRenderingMode(.palette)
-                           .foregroundStyle(.blue, .black)
-                           .font(.system(size: 20))
-                           .padding(10)
-                           .overlay(
-                                           RoundedRectangle(cornerRadius: 100)
-                                               .stroke(Color.gray, lineWidth: 1)
-                                       )
+                    if cart == true{
+                        Image("d")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: 50)
+                            
+                    }
+                    else{
+                        Image("ca")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: 30)
+                            .font(.system(size: 20))
+                            .padding(10)
+                            .overlay(
+                                RoundedRectangle(cornerRadius: 100)
+                                    .stroke(Color.gray, lineWidth: 2)
+                            )
+                    }
                 }
-                Button(action: {
-                            // Code to execute when the button is tapped
-                            print("Button tapped!")
-                        }) {
-                            Text("Add to cart")
-                                .foregroundColor(.white)
-                                .fontWeight(.semibold)
-                                .padding()
-                                .frame(width: 300)
-                                .background(Color.blue)
-                                .cornerRadius(100)
-                                
-                        }
+                if (cart == true){
+                    Button(action: {
+                        // Code to execute when the button is tapped
+                        cart = false
+                    }
+                           
+                    ) {
+                        
+                        Text("Remove from cart")
+                            .foregroundColor(.white)
+                            .fontWeight(.semibold)
+                            .padding()
+                            .frame(width: 300)
+                            .background(Color.blue)
+                            .cornerRadius(100)
+                        
+                    }
+                }
+                else {
+                    Button(action: {
+                        // Code to execute when the button is tapped
+                        cart = true
+                    }) {
+                        
+                        Text("Add to cart")
+                            .foregroundColor(.white)
+                            .fontWeight(.semibold)
+                            .padding()
+                            .frame(width: 300)
+                            .background(Color.blue)
+                            .cornerRadius(100)
+                        
+                    }
+                }
             }
 
             .animation(.default.speed(0.7))
@@ -193,8 +251,10 @@ struct ProductView: View {
 
        
         .toolbar(.hidden, for: .tabBar)
+        
 
     }
+    
 }
 
 struct ProductView_Previews: PreviewProvider {
@@ -211,9 +271,10 @@ struct ColorBtn : View {
         VStack{
             
         }
-        .frame(width: 36,height: 36)
+        .frame(width: 30,height: 30)
         .background(Color("\(colorname)"))
         .cornerRadius(40)
+        .opacity(0.7)
     }
 }
 
