@@ -43,7 +43,7 @@ struct ProductView: View {
                         .resizable()
                         .scaledToFit()
                         .frame(width: 320,height: 320)
-                        .padding(.top,85)
+                        .padding(.top,50)
                         .transition(transition2)
                     
 
@@ -106,14 +106,13 @@ struct ProductView: View {
                             .foregroundColor(Color("TextBlack"))
                             .font(.system(size: 16))
                             .fontWeight(.semibold)
-                        Spacer()
                         Text("\(activeWatch)")
                             .foregroundColor(Color("TextBlack"))
                             .font(.system(size: 16))
-                            .opacity(0.5)
-                            .fontWeight(.medium)
+                            .opacity(0.3)
                             .transition(transition2)
                         
+                        Spacer()
 
 
                         
